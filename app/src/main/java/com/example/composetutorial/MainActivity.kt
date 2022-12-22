@@ -49,10 +49,10 @@ fun DefaultPreview() {
 
 /**
  * メッセージカードの関数
- * - composableであること
- * - コンポーズ可能なTextを返すこと
- * - 関数の先頭は大文字であること
- * - Messageを受け入れるようにコンポーザブルのパラメータを変更
+ * Rowにmodifierを追加し、パディングを全体8で設定
+ * Imageにmodifierを追加し、sizeを40dp, clipをcircle shapeで設定
+ * Imageの下に空間を8dp入れる
+ * ColumnのTextとTextの間に空間を4dp入れる
  */
 @Composable
 fun MessageCard(msg: Message) {
@@ -79,4 +79,13 @@ data class Message(val author: String, val message: String)
 @Composable
 fun PreviewMessageCard() {
     MessageCard(Message("Android", "Jetpack Compose"))
+}
+
+@Preview
+@Composable
+fun MyImage() {
+    Image(
+        painter = painterResource(id = R.drawable.index_topc4),
+        contentDescription = "Content Profile Picture",
+    )
 }
