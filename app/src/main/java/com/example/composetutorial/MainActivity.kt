@@ -26,6 +26,7 @@ import com.example.composetutorial.ui.theme.ComposeTutorialTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // todo テーマ内をConversationで置き換える
         setContent { // contentブロックを定義
             ComposeTutorialTheme {
                 // A surface container using the 'background' color from the theme
