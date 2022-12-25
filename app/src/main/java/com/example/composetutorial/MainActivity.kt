@@ -4,6 +4,8 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -73,6 +75,9 @@ fun MessageCard(msg: Message) {
         //  isExpandedに応じた値を設定
         //      true: primaryカラー
         //      false: surfaceカラー
+        val surfaceColor by animateColorAsState(
+            if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface
+        )
 
         // todo Columnをclickする度にisExpandedの値が反転すること
         Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
@@ -94,12 +99,19 @@ fun MessageCard(msg: Message) {
                     // isExpanded:  Int.MAX_VALUE
                     // !isExpanded: 1
                 // style: typography.body2を設定
-            Text(
-                text = msg.body,
-                style = MaterialTheme.typography.body2,
-                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
-                modifier = Modifier.padding(4.dp)
-            )
+            Surface(
+                shape = MaterialTheme.shapes.medium,
+                elevation = 1.dp,
+                color = surfaceColor,
+                modifier = Modifier.animateContentSize().padding(all = 1.dp)
+            ) {
+                Text(
+                    text = msg.body,
+                    style = MaterialTheme.typography.body2,
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                    modifier = Modifier.padding(4.dp)
+                )
+            }
         }
     }
 }
