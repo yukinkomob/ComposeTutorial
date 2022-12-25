@@ -11,15 +11,16 @@ class MainActivity : ComponentActivity()
  * Imageにmodifierを追加し、sizeを40dp, clipをcircle shapeで設定
  *   加えて、border を幅1.5dp, セカンダリ色指定、円形で設定
  * content description を null
- * Imageの下に空間を8dp入れる
+ * Imageの右に空間を8dp入れる
+ * isExpandedというStateを用意する（Columnで利用）
  * Columnを追加
+ *  modifierにclickイベントを追加し、isExpandedの値を反転代入
  *  authorテキスト
  *      色を指定（secondaryVariant）
  *      タイポグラフィを指定（subtitle2）
  *  TextとTextの間に空間を4dp入れる
  *  bodyテキスト
  *      タイポグラフィを指定（body2）
- *  isExpandedというStateを用意する
  */
 
 
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity()
 
 /**
  * 関数をプレビューする (previewMessageCard)
- * - Preview アノテーションを利用すること
+ * - Preview アノテーションを利用すること（Composableも併せて必要）
  * - プレビュー可能なMessageCard関数を作成する
  * - プロジェクト内で作成したテーマを指定する
  * - Surfaceを使用する（ComposeTutorialThemeで囲うこと）
