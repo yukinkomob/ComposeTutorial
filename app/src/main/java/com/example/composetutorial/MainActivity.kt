@@ -69,6 +69,10 @@ fun MessageCard(msg: Message) {
         // todo remember関数の値をisExpandedに保管する（再利用する）
         // todo 値自体はMutableState<Boolean>型にfalseを渡す形
         var isExpanded by remember { mutableStateOf(false) }
+        // todo surfaceColorを設定（animateColorStateを利用）
+        //  isExpandedの値に応じて変化させる
+        //      true: primaryカラー
+        //      false: surfaceカラー
 
         // todo Columnをclickする度にisExpandedの値が反転すること
         Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
@@ -88,6 +92,8 @@ fun MessageCard(msg: Message) {
                     // isExpanded:  Int.MAX_VALUE
                     // !isExpanded: 1
                 // style: typography.body2を設定
+            // todo colorにsurfaceColorを設定する
+            // todo animateContentSizeのパディングを1dpで指定する
             Text(
                 text = msg.body,
                 style = MaterialTheme.typography.body2,
