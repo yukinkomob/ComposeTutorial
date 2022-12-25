@@ -14,12 +14,17 @@ class MainActivity : ComponentActivity() {
  * メッセージカードの関数
  * Rowにmodifierを追加し、パディングを全体8で設定
  * Imageにmodifierを追加し、sizeを40dp, clipをcircle shapeで設定
- * Imageの下に空間を8dp入れる
- * ColumnのTextとTextの間に空間を4dp入れる
+ *   加えて、border を幅1.5dp, セカンダリ色指定、円形で設定
  * content description を null
- * border を幅1.5dp, セカンダリ色指定、円形で設定
- * タイポグラフィを追加
- * isExpandedというStateを用意する
+ * Imageの下に空間を8dp入れる
+ * Columnを追加
+ *  authorテキスト
+ *      色を指定（secondaryVariant）
+ *      タイポグラフィを指定（subtitle2）
+ *  TextとTextの間に空間を4dp入れる
+ *  bodyテキスト
+ *      タイポグラフィを指定（body2）
+ *  isExpandedというStateを用意する
  */
 
 
@@ -30,12 +35,18 @@ class MainActivity : ComponentActivity() {
  */
 
 
+// 関数名：Conversation
+// 引数：messages: List<Message>
+// LazyColumnを利用する
+//  messagesのitemをMessageCardに渡してそれをリストとして表示する
+
+
 /**
  * 関数をプレビューする (previewMessageCard)
  * - Preview アノテーションを利用すること
  * - プレビュー可能なMessageCard関数を作成する
  * - プロジェクト内で作成したテーマを指定する
- * - Surfaceを使用する
+ * - Surfaceを使用する（ComposeTutorialThemeで囲うこと）
  * @note Light Modeの場合、デフォルトの値がそのまま使われる？
  *      nameを"Light Mode"に設定
  * @note Dark Modeの場合、ダークモードの設定が行われる
@@ -43,12 +54,6 @@ class MainActivity : ComponentActivity() {
  *      uiModeにConfiguration.UI_MODE_NIGHT_YESを設定
  *      showBackgroundにtrueを設定
  */
-
-
-// 関数名：Conversation
-// 引数：messages: List<Message>
-// LazyColumnを利用する
-//  messagesのitemをMessageCardに渡してそれをリストとして表示する
 
 
 // 関数名：PreviewConversation
