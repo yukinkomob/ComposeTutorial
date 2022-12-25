@@ -1,14 +1,9 @@
 package com.example.composetutorial
 
-import android.os.Bundle
 import androidx.activity.ComponentActivity
 
 // 利用しない
-class MainActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-}
+class MainActivity : ComponentActivity()
 
 /**
  * メッセージカードの関数
