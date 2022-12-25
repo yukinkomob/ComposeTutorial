@@ -32,26 +32,12 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colors.background
                     color = Color.LightGray
                 ) {
-                    Greeting("Android2")
+                    Text("Android2")
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!!!") // コンポーズ可能な関数
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ComposeTutorialTheme {
-        Greeting("Android Developer")
     }
 }
 
@@ -108,15 +94,25 @@ fun MessageCard(msg: Message) {
     }
 }
 
+/**
+ * Messageを表すデータクラスを定義
+ *  author: String
+ *  body: String
+ */
 data class Message(val author: String, val body: String)
 
 /**
- * 関数をプレビューする
+ * 関数をプレビューする (previewMessageCard)
  * - Preview アノテーションを利用すること
  * - プレビュー可能なMessageCard関数を作成する
  * - プロジェクト内で作成したテーマを指定する
  * - Surfaceを使用する
  * @note Light Modeの場合、デフォルトの値がそのまま使われる？
+ *      nameを"Light Mode"に設定
+ * @note Dark Modeの場合、ダークモードの設定が行われる
+ *      nameを"Dark Mode"に設定
+ *      uiModeにConfiguration.UI_MODE_NIGHT_YESを設定
+ *      showBackgroundにtrueを設定
  */
 @Preview(name = "Light Mode")
 @Preview(
