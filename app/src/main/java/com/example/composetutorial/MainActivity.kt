@@ -85,6 +85,8 @@ fun MessageCard(msg: Message) {
             // todo Surfaceで囲ってやること
             // todo     shapeにmediumを設定すること
             // todo     elevationは1dpを設定すること
+            // todo     テキストの背景色にsurfaceColorを設定する
+            // todo     併せて、animateContentSizeのパディングを1dpで指定する
             // todo Textは下記のように設定する
                 // text: message bodyを設定
                 // modifier: paddingを全体に4dp設定
@@ -92,12 +94,11 @@ fun MessageCard(msg: Message) {
                     // isExpanded:  Int.MAX_VALUE
                     // !isExpanded: 1
                 // style: typography.body2を設定
-            // todo テキストの背景色にsurfaceColorを設定する
-            // todo 併せて、animateContentSizeのパディングを1dpで指定する
             Text(
                 text = msg.body,
                 style = MaterialTheme.typography.body2,
-                maxLines = if (isExpanded) Int.MAX_VALUE else 1
+                maxLines = if (isExpanded) Int.MAX_VALUE else 1,
+                modifier = Modifier.padding(4.dp)
             )
         }
     }
