@@ -70,7 +70,7 @@ fun MessageCard(msg: Message) {
         // todo 値自体はMutableState<Boolean>型にfalseを渡す形
         var isExpanded by remember { mutableStateOf(false) }
         // todo surfaceColorを設定（animateColorStateを利用）
-        //  isExpandedの値に応じて変化させる
+        //  isExpandedに応じた値を設定
         //      true: primaryカラー
         //      false: surfaceカラー
 
@@ -92,8 +92,8 @@ fun MessageCard(msg: Message) {
                     // isExpanded:  Int.MAX_VALUE
                     // !isExpanded: 1
                 // style: typography.body2を設定
-            // todo colorにsurfaceColorを設定する
-            // todo animateContentSizeのパディングを1dpで指定する
+            // todo テキストの背景色にsurfaceColorを設定する
+            // todo 併せて、animateContentSizeのパディングを1dpで指定する
             Text(
                 text = msg.body,
                 style = MaterialTheme.typography.body2,
