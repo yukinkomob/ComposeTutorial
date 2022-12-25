@@ -6,13 +6,14 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -67,9 +68,10 @@ fun MessageCard(msg: Message) {
 
         // todo remember関数の値をisExpandedに保管する（再利用する）
         // todo 値自体はMutableState<Boolean>型にfalseを渡す形
+        var isExpanded by remember { mutableStateOf(false) }
 
         // todo Columnをclickする度にisExpandedの値が反転すること
-        Column {
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(
                 text = msg.author,
                 color = MaterialTheme.colors.secondaryVariant,
@@ -88,7 +90,8 @@ fun MessageCard(msg: Message) {
                 // style: typography.body2を設定
             Text(
                 text = msg.body,
-                style = MaterialTheme.typography.body2
+                style = MaterialTheme.typography.body2,
+                maxLines = if (isExpanded) Int.MAX_VALUE else 1
             )
         }
     }
@@ -151,6 +154,8 @@ fun Conversation(messages: List<Message>) {
 @Composable
 fun PreviewConversation() {
     ComposeTutorialTheme {
-        Conversation(SampleData.conversationSample)
+        Surface() {
+            Conversation(SampleData.conversationSample)
+        }
     }
 }
